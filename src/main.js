@@ -1,11 +1,66 @@
+import Lenis from "lenis";
 import gsap from "gsap";
+import { preloadImages } from "./utils/preloadImages";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CustomEase from "gsap/CustomEase";
+import { initTextSplit } from "./utils/textSplit";
+import { initLinesReveal } from "./animations/linesReveal";
 
-console.log("🚀 Webflow Custom Code Loaded");
+gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-// Your GSAP animations and custom code here
-gsap.from([".hero-title", ".hero-title + p"], {
-	opacity: 0,
-	y: 50,
+CustomEase.create("cEase", "0.65, 0.05, 0, 1");
+CustomEase.create("cEaseReverse", "1, 0, 0.35, 0.95");
+CustomEase.create("cEase2", "0.45,0.2,0.1,1");
+
+gsap.defaults({
+	ease: "cEase",
 	duration: 1,
-	ease: "power3.out",
+});
+
+let lenis = new Lenis({
+	lerp: 0.125,
+	wheelMultiplier: 0.8,
+	gestureOrientation: "vertical",
+	normalizeWheel: false,
+	smoothTouch: false,
+	autoResize: true,
+});
+
+lenis.on("scroll", ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+	lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
+let splitTextLines, splitTextWords, splitTextChars;
+
+document.fonts.ready.then(() => {
+	// initTextSplit returns an object with the split instances; assign them to
+	// the outer variables so they are usable elsewhere.
+	({ splitTextLines, splitTextWords, splitTextChars } = initTextSplit(
+		splitTextLines,
+		splitTextWords,
+		splitTextChars
+	));
+
+	initLinesReveal(splitTextLines);
+
+	window.addEventListener("resize", () => {
+		gsap.delayedCall(0.5, () => {
+			({ splitTextLines, splitTextWords, splitTextChars } = initTextSplit(
+				splitTextLines,
+				splitTextWords,
+				splitTextChars
+			));
+			initLinesReveal(splitTextLines);
+		});
+	});
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+	preloadImages().then(() => {
+		console.log("All images preloaded. Starting animations...");
+	});
 });
