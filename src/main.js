@@ -60,6 +60,11 @@ document.fonts.ready.then(() => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+	if (typeof window.gsap === "undefined") {
+		document.documentElement.classList.add("gsap-not-found");
+	}
+	gsap.set('[data-prevent-flicker="true"]', { autoAlpha: 1 });
+
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");
 	});

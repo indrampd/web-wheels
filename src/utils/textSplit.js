@@ -27,7 +27,10 @@ export function initTextSplit(splitTextLines, splitTextWords, splitTextChars) {
 			const rectange = document.createElement("div");
 			rectange.classList.add("line-rectangle");
 			rectange.style.position = "absolute";
-			rectange.style.inset = "0";
+			rectange.style.top = "0";
+			rectange.style.left = "0";
+			rectange.style.width = "100%";
+			rectange.style.height = "80%";
 			rectange.style.zIndex = "0";
 			rectange.style.transform = "scaleX(0)";
 			rectange.style.mixBlendMode = "screen";

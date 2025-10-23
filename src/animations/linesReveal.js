@@ -28,6 +28,7 @@ export function initLinesReveal(splitTextLines) {
 			},
 			defaults: {
 				ease: "power2.inOut",
+				duration: 1.25,
 			},
 		})
 			.fromTo(
@@ -40,7 +41,7 @@ export function initLinesReveal(splitTextLines) {
 				rects,
 				{ scaleX: 1, transformOrigin: "right center" },
 				{ scaleX: 0, stagger: 0.15 },
-				"<25%"
+				0.25
 			);
 	});
 }
