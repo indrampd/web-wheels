@@ -20,7 +20,7 @@ export function initTextSplit(splitTextLines, splitTextWords, splitTextChars) {
 		});
 
 		splitTextLines.masks.forEach((mask) => {
-			mask.style.width = "fit-content";
+			mask.style.width = "max-content";
 		});
 
 		splitTextLines.lines.forEach((line) => {

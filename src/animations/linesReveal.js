@@ -34,7 +34,7 @@ export function initLinesReveal(splitTextLines) {
 			.fromTo(
 				masks,
 				{ clipPath: "inset(0 100% 0 0)" },
-				{ clipPath: "inset(0 0% 0 0)", stagger: 0.15 },
+				{ clipPath: "inset(0 0% 0 0)" },
 				"<"
 			)
 			.fromTo(

@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomEase from "gsap/CustomEase";
 import { initTextSplit } from "./utils/textSplit";
 import { initLinesReveal } from "./animations/linesReveal";
+import "./style.css";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (typeof window.gsap === "undefined") {
 		document.documentElement.classList.add("gsap-not-found");
 	}
-	gsap.set('[data-prevent-flicker="true"]', { autoAlpha: 1 });
+	gsap.set('[data-prevent-flicker="true"], [data-split]', { autoAlpha: 1 });
 
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");
