@@ -6,6 +6,7 @@ import CustomEase from "gsap/CustomEase";
 import { initTextSplit } from "./utils/textSplit";
 import { initLinesReveal } from "./animations/linesReveal";
 import "./style.css";
+import { initHorizontalScroll } from "./animations/horizontalScroll";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -38,8 +39,6 @@ gsap.ticker.lagSmoothing(0);
 let splitTextLines, splitTextWords, splitTextChars;
 
 document.fonts.ready.then(() => {
-	// initTextSplit returns an object with the split instances; assign them to
-	// the outer variables so they are usable elsewhere.
 	({ splitTextLines, splitTextWords, splitTextChars } = initTextSplit(
 		splitTextLines,
 		splitTextWords,
@@ -65,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.documentElement.classList.add("gsap-not-found");
 	}
 	gsap.set('[data-prevent-flicker="true"], [data-split]', { autoAlpha: 1 });
+
+	initHorizontalScroll();
 
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");
