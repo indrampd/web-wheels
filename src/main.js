@@ -7,6 +7,7 @@ import { initTextSplit } from "./utils/textSplit";
 import { initLinesReveal } from "./animations/linesReveal";
 import "./style.css";
 import { initHorizontalScroll } from "./animations/horizontalScroll";
+import { initNavbarAutoHide } from "./animations/navbarAutoHide";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -66,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	gsap.set('[data-prevent-flicker="true"], [data-split]', { autoAlpha: 1 });
 
 	initHorizontalScroll();
+	initNavbarAutoHide();
 
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");
