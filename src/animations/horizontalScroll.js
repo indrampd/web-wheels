@@ -31,7 +31,7 @@ export function initHorizontalScroll() {
 					scrollTrigger: {
 						trigger: spacer,
 						start: "top bottom",
-						end: "bottom-=10% bottom",
+						end: "bottom bottom",
 						// markers: true,
 						scrub: true,
 					},

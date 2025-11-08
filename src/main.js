@@ -5,9 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomEase from "gsap/CustomEase";
 import { initTextSplit } from "./utils/textSplit";
 import { initLinesReveal } from "./animations/linesReveal";
-import "./style.css";
 import { initHorizontalScroll } from "./animations/horizontalScroll";
 import { initNavbarAutoHide } from "./animations/navbarAutoHide";
+import { foundingSectionAnimation } from "./animations/about/foundingSection";
+import "./style.css";
+import { sectionTransition } from "./animations/sectionTransition";
+import { parallaxAnimation } from "./animations/parallaxAnimation";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -68,6 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	initHorizontalScroll();
 	initNavbarAutoHide();
+	foundingSectionAnimation();
+	sectionTransition();
+	parallaxAnimation();
 
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");

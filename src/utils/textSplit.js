@@ -30,7 +30,7 @@ export function initTextSplit(splitTextLines, splitTextWords, splitTextChars) {
 			rectange.style.top = "0";
 			rectange.style.left = "0";
 			rectange.style.width = "100%";
-			rectange.style.height = "80%";
+			rectange.style.height = "100%";
 			rectange.style.zIndex = "0";
 			rectange.style.transform = "scaleX(0)";
 			rectange.style.mixBlendMode = "screen";
