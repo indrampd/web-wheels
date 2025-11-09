@@ -42,7 +42,7 @@ export function foundingSectionAnimation() {
 						0,
 						20,
 						0,
-						6,
+						15,
 						Math.abs(velocity)
 					);
 					animateSkewX(skewValue * -direction);
