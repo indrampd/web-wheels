@@ -45,7 +45,7 @@ export function foundingSectionAnimation() {
 						6,
 						Math.abs(velocity)
 					);
-					animateSkewX(skewValue * direction);
+					animateSkewX(skewValue * -direction);
 				},
 				onLeave: () => {
 					skewValue = 0;
