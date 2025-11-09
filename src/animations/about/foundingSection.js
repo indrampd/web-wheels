@@ -9,18 +9,12 @@ export function foundingSectionAnimation() {
 	if (!section) return;
 
 	gsap.context((self) => {
-		let velocity = 0;
-		let direction = 1;
-		let isFirstUpdate = true;
+		let proxy = { skew: 0 };
+
 		const titles = self.selector(".founding_title");
-		const animateSkewX = gsap.quickTo(titles, "skewX", {
-			duration: 0.4,
-			ease: "power3.out",
-		});
+		const skewSetter = gsap.quickSetter(titles, "skewX", "deg");
 
-		let skewValue = 0;
-
-		animateSkewX(skewValue);
+		skewSetter(proxy.skew);
 
 		const mm = gsap.matchMedia();
 
@@ -29,32 +23,19 @@ export function foundingSectionAnimation() {
 				trigger: section,
 				start: "top top",
 				end: "bottom bottom",
-				scrub: true,
 				onUpdate: (self) => {
-					if (isFirstUpdate) {
-						isFirstUpdate = false;
-						return;
+					let skewAmount = self.getVelocity() / -100;
+					skewAmount = gsap.utils.clamp(-20, 20, skewAmount);
+					if (Math.abs(skewAmount) > Math.abs(proxy.skew)) {
+						proxy.skew = skewAmount;
+						gsap.to(proxy, {
+							skew: 0,
+							duration: 0.8,
+							ease: "power3",
+							overwrite: true,
+							onUpdate: () => skewSetter(proxy.skew),
+						});
 					}
-
-					velocity = self.getVelocity() / 100;
-					direction = self.direction;
-
-					skewValue = gsap.utils.mapRange(
-						0,
-						20,
-						0,
-						15,
-						Math.abs(velocity)
-					);
-					animateSkewX(skewValue * -direction);
-				},
-				onLeave: () => {
-					skewValue = 0;
-					animateSkewX(skewValue);
-				},
-				onLeaveBack: () => {
-					skewValue = 0;
-					animateSkewX(skewValue);
 				},
 			});
 
