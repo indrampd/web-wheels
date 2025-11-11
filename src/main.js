@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initNavbarAutoHide();
 	foundingSectionAnimation();
 	sectionTransition();
-	parallaxAnimation();
+	// parallaxAnimation();
 
 	preloadImages().then(() => {
 		console.log("All images preloaded. Starting animations...");
