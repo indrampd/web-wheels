@@ -1,6 +1,3 @@
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-
 gsap.registerPlugin(SplitText);
 
 export function initTextSplit(splitTextLines, splitTextWords, splitTextChars) {

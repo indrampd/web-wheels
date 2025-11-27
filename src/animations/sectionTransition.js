@@ -1,5 +1,3 @@
-import gsap from "gsap";
-
 export function sectionTransition() {
 	const section = document.querySelector(
 		"[data-animation='section-transition']"

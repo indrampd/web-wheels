@@ -1,5 +1,4 @@
 import Lenis from "lenis";
-import gsap from "gsap";
 import { preloadImages } from "./utils/preloadImages";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomEase from "gsap/CustomEase";
