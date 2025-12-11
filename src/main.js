@@ -53,6 +53,17 @@ document.querySelectorAll("[data-lenis-stop]").forEach((element) => {
 	});
 });
 
+document.querySelectorAll("[data-lenis-toggle]").forEach((element) => {
+	element.addEventListener("click", function () {
+		this.classList.toggle("stop-scroll");
+		if (this.classList.contains("stop-scroll")) {
+			lenis.stop();
+		} else {
+			lenis.start();
+		}
+	});
+});
+
 let splitTextLines, splitTextWords, splitTextChars;
 
 document.fonts.ready.then(() => {
