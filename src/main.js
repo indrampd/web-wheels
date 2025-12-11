@@ -11,6 +11,7 @@ import "./style.css";
 import { sectionTransition } from "./animations/sectionTransition";
 import { parallaxAnimation } from "./animations/parallaxAnimation";
 import { aftermarketSlider } from "./animations/about/aftermarketSlider";
+import { exploreAnimation } from "./animations/home/exploreAnimation";
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -85,6 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	initNavbarAutoHide();
 	foundingSectionAnimation();
 	sectionTransition();
+
+	// Home
+	exploreAnimation();
 
 	// about
 	aftermarketSlider();
