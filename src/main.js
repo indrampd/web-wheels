@@ -40,6 +40,18 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
+document.querySelectorAll("[data-lenis-start]").forEach((element) => {
+	element.addEventListener("click", () => {
+		lenis.start();
+	});
+});
+
+document.querySelectorAll("[data-lenis-stop]").forEach((element) => {
+	element.addEventListener("click", () => {
+		lenis.stop();
+	});
+});
+
 let splitTextLines, splitTextWords, splitTextChars;
 
 document.fonts.ready.then(() => {
