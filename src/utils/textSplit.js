@@ -21,6 +21,13 @@ export function initTextSplit(splitTextLines, splitTextWords, splitTextChars) {
 		});
 
 		splitTextLines.lines.forEach((line) => {
+			if (
+				line.parentNode.parentNode.classList.contains(
+					"u-color-gradient"
+				)
+			) {
+				line.classList.add("u-color-gradient");
+			}
 			const rectange = document.createElement("div");
 			rectange.classList.add("line-rectangle");
 			rectange.style.position = "absolute";
